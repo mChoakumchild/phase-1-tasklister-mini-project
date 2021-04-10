@@ -33,26 +33,41 @@ function usrInfo(num) {
   deleteB.innerText = "Delete"
   deleteB.type = "delete"
   deleteB.class = "usrInput"
+// creating an edit button
+  let editB = document.createElement('button') 
+  editB.innerText = "Edit"
+  editB.type = "edit"
+  editB.class = "usrInputEdit"
   // appending new elements to existing ones in the document. 
   taskList.append(newTask)
   newTask.append(usrTxt)
+  newTask.append(editB)
   newTask.append(deleteB)
-  
 }
 
 // Delete function
 taskList.addEventListener("click", (e) => {  //listens to children of parent taskList ("ul") element
   e.preventDefault()   //This prevents page refresh
- 
   let indx = e.target.closest('li');   //.closest() method finds element closest to the target with tag "li"
   if (!indx) return;        //If there is no element the function ends
   //console.log(e.target)
-  if (e.target.matches("button")){   //if the target matches the element type "button"...
+  if (e.target.matches("button[type=delete]")){   //if the target matches the element type "button"...
     indx.remove();   ///the element with tag "li" is removed
     num -= 1;    //num increments down so new tags can be made
   }
+  else if(e.target.matches("button[type=edit]")) {
+    colorChecker(indx)
+    indx.childNodes[0].textContent = taskDescriptionText.value  //this edits the text in indx without changing the child nodes. (This odccurs with indx.innerText)
+  }
   return num;
   });
+
+//Edit Function
+// taskList.addEventListener("click", (e) => {
+//   e.preventDefault()
+//   let indx = e.target.closest('li');
+//   if (!indx) return;
+//   if (e.target.matches("button")){ 
 
 
 // This function makes the 3 priority settings available in a drop down
