@@ -83,7 +83,7 @@ function makepriorityoptions (taskList) {
   let taskTextThree = document.createElement('option')
   taskTextThree.innerText = taskTextThree.value = `${prioritytable.Green}`
   newTaskopt.append(taskTextOne, taskTextTwo, taskTextThree)  //appending the inner option elemnts to the select object
-  taskHeader.append(newTaskopt)   // finally appending the new objects to taskHeader. Note that you can append elements that are not yet attached to the html
+  taskList.append(newTaskopt)   // finally appending the new objects to taskHeader. Note that you can append elements that are not yet attached to the html
   
 }
 // Change color of text depending on value.
